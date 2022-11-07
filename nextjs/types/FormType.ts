@@ -1,0 +1,1 @@
+export type FormType = "email" | "forget" | "login" | "register" | "reset";
