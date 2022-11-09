@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 import { useMenu } from '../../contexts/MenuContext/useMenu';
 import Divider from '../Home/Header/Divider';
-
+import MenuData from './MenuData';
 type PropsMenu = {
     logged?: boolean;
     children?:React.ReactNode;
@@ -34,37 +34,25 @@ export default function Menu(props:PropsMenu) {
                     </svg>
                 </button>
                 <ul>
-                    <li>
-                        <Link href="/#home">
-                            <a onClick={()=> setIsOpen(false)} >Home</a>
-                        </Link>
-                        
-                    </li>
-                    <li>
-                        <Link href="/#service">
-                            <a onClick={()=> setIsOpen(false)} >Revisão</a>
+                    {MenuData.map((itemMenu)=> (
+        !itemMenu.logged &&  <li key={itemMenu.id}>
+                        <Link href={itemMenu.link}>
+                            <a onClick={()=> setIsOpen(itemMenu.open)} >{itemMenu.title}</a>
                         </Link>
                     </li>
-                    <li>
-                         <Link href="/#contact">
-                            <a onClick={()=> setIsOpen(false)} >Contato</a>
-                        </Link>
-                    </li>
+                    ))}
+                   
                     <Divider logged={true}/>
            
-      {logged &&
-            <>
-                    <li className="hide-guest">
-                        <a href="schedules.html">Agendamentos</a>
+                {MenuData.map((itemMenu)=> (
+        itemMenu.logged &&  <li key={itemMenu.id}>
+                        <Link href={itemMenu.link}>
+                            <a onClick={()=> setIsOpen(itemMenu.open)} >{itemMenu.title}</a>
+                        </Link>
                     </li>
-                    <li className="hide-guest"><a href="profile.html">Editar Dados</a></li>
-                    <li className="hide-guest">
-                        <a href="change-photo.html">Mudar Foto</a>
-                    </li>
-                    <li className="hide-guest">
-                        <a href="change-password.html">Alterar Senha</a>
-                    </li>
-            </>}
+                    ))}
+                   
+      
                 </ul>
             </nav>
             <div className="footer">

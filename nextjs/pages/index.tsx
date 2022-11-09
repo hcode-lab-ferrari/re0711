@@ -29,7 +29,7 @@ export const getServerSideProps = withIronSessionSsr(async (context: GetServerSi
 
   return {
     props: {
-
+      token: context.req.session.token? context.req.session.token : null
     }
   }
 
