@@ -4,6 +4,10 @@ import axios from 'axios';
 import { Schedule } from '../types/Schedule';
 import { useState } from 'react';
 import { dateStringToDate } from '../utils/dateStringToDate';
+import redirectToAuth from '../utils/redirectToAuth';
+import withAuthentication from '../utils/withAuthentication';
+import Head from '../components/Head';
+import Header from '../components/Home/Header';
 
 type ComponentPageProps = {
     schedules: Schedule[],
@@ -16,12 +20,23 @@ const ComponentPage: NextPage<ComponentPageProps> = ({schedules, token}) => {
             (schedule) => dateStringToDate(schedule.scheduleAt).getTime() > new Date().getTime()
         )
     )
+    const [historySchedules, setHistorySchedules] = useState<Schedule[]>(
+        schedules.filter(
+            (schedule) => dateStringToDate(schedule.scheduleAt).getTime() <= new Date().getTime()
+        )
+    )
+
+
+    
   return (
-    <div>schedules</div>
+   <>
+    <Head />
+    <Header/>
+   </>
   )
 }
 
-export const getServerSideProps = async (context:GetServerSidePropsContext) => {
+export const getServerSideProps = withAuthentication(async (context) => {
     try {
         const { token} = context.req.session;
 
@@ -35,11 +50,11 @@ export const getServerSideProps = async (context:GetServerSidePropsContext) => {
         props: {
             schedules, token
         }
-    }
+        }
     } catch (error){
-        console.log(error);
+        return redirectToAuth(context);
     }
     
-}
+});
 
 export default ComponentPage;
