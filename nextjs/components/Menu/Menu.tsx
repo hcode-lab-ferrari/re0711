@@ -84,7 +84,9 @@ export default function Menu(props:PropsMenu) {
                         </svg>
                     </button>
                 </div>
-                <a href="auth.html" className="btn-register"> Minha Conta </a>
+                <Link href="/auth">
+                <a className="btn-register"> Minha Conta </a>
+                </Link>
             </div>
         </div>
   )

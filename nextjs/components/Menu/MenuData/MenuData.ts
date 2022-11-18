@@ -30,7 +30,7 @@ const MenuData: Array<TypeMenuData> = [
   {
     id: 4,
     title: "Agendamentos",
-    link: "/schedule",
+    link: "/schedules",
     open: false,
     logged: true,
   },

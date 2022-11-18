@@ -12,6 +12,9 @@ import { format, getDay, parse, parseJSON } from "date-fns";
 import locale from 'date-fns/locale/pt-BR';
 import { withIronSessionSsr } from 'iron-session/next';
 import { sessionOptions } from '../utils/session';
+import Toast from '../components/Toast';
+import Footer from '../components/Page/Footer';
+import { BackButton, ContinueButton } from '../components/Page/Footer/Footer';
 
 
 type FormData = {
@@ -64,6 +67,23 @@ const onSubmit: SubmitHandler<FormData> = (data)=>{
                             </label>
                         ))}
                     </div>
+                    <Toast 
+                    type="danger"
+                    open={Object.keys(errors).length > 0}
+                    onClose={()=> clearErrors()}
+                    >
+                        {Object.keys(errors).map((key)=> (
+                            <p key={key}>{get(errors, `${key}.message`)}&nbsp;</p>
+                        ))}
+                    </Toast>
+                     <Footer
+                    buttons={[
+                        BackButton,
+                        ContinueButton,
+                    ]}
+                />            
+
+
                 </form>
             </Page>
         </>
