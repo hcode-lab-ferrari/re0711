@@ -31,17 +31,10 @@ const ComponentPage: NextPage = () => {
     
     const router = useRouter();
     const scheduleAt = watch('scheduleAt', format(new Date(), 'yyyy-MM-dd'))
-    const onSubmit: SubmitHandler<FormData> = ({scheduleAt})=>{
 
-        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSGVucmlxdWUgQ3VuaGEiLCJlbWFpbCI6ImpvYW9AaGNvZGUuY29tLmJyIiwicGhvdG8iOiI4MzBkZjg3NmY1OTMwYzE1MTg5NWQ5YzU0MWJkYTQ5Ni5qcGciLCJpZCI6MSwiaWF0IjoxNjY4MjE3OTIzLCJleHAiOjE2Njg4MjI3MjN9.uZx0SIOqS7fbVTVKKVYIE6o7mkgXq8ORt6fqw1ouLt4';
-        axios.post('/schedules/new',{
+    const onSubmit: SubmitHandler<FormData> = ({scheduleAt})=>{
+        axios.post('/api/schedules/new',{
             scheduleAt,
-        },
-        {
-            baseURL: process.env.API_URL,
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
         })
         .then(()=> router.push('/schedules-time-options'))
         .catch((error)=>{

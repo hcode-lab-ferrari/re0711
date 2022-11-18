@@ -1,6 +1,15 @@
-import { Controller, Delete, Get, Param, UseGuards } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Post,
+    UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { SchedulesService } from './schedules.service';
+import { ScheduleProps } from './SchedulesType';
 
 @Controller('schedules')
 export class SchedulesController {

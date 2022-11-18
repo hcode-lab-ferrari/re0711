@@ -15,6 +15,7 @@ import {
 } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { include } from './schedules.const';
+import { ScheduleProps } from './SchedulesType';
 
 @Injectable()
 export class SchedulesService {
