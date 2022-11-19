@@ -4,7 +4,7 @@ import { TimeOption } from '../types/TimeOption';
 import Head from '../components/Head';
 import Header from '../components/Home/Header';
 import Page from '../components/Page';
-import { SubmitHandler, useForm } from "react-hook-form";
+import { get, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import {useState} from 'react';
 import axios from 'axios';
@@ -14,7 +14,7 @@ import { withIronSessionSsr } from 'iron-session/next';
 import { sessionOptions } from '../utils/session';
 import Toast from '../components/Toast';
 import Footer from '../components/Page/Footer';
-import { BackButton, ContinueButton } from '../components/Page/Footer/Footer';
+import { BackButton, ContinueButton } from '../components/Page/Footer';
 
 
 type FormData = {
