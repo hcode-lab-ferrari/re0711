@@ -13,7 +13,7 @@ type FooterButton ={
 }
 
 type FooterProps = {
-    buttons: FooterButton[];
+    buttons?: FooterButton[];
 }
 
 export const BackButton: FooterButton = {
