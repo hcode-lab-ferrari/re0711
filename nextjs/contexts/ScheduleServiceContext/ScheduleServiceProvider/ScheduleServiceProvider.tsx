@@ -6,7 +6,9 @@ import { ScheduleServiceContext } from '../ScheduleServiceContext';
 
 
 export default function ScheduleProvider({children}:{children: React.ReactNode}){
+    //armazenando os serviços disponíveis
     const [services, setServices] = useState<Service[]>([]);
+    //armazenando os serviços selecionados
     const [selecteds, setSelecteds] = useState<Service[]>([]);
 
     const addService = (serviceId: number)=> {
