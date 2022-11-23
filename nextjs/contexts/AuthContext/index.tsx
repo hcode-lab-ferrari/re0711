@@ -134,7 +134,7 @@ export default function AuthProvider({
 
   const onSubmitLogin = (formData: FormDataLogin) => {
     axios
-      .post<FormLoginResponse>("api/login", formData)
+      .post<FormLoginResponse>("api/auth/login", formData)
       .then(({ data }) => {
         setToken(data.token);
         redirectToNextURL();

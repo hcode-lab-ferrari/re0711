@@ -5,7 +5,7 @@ import FormForget from "../components/Auth/FormForget";
 import FormLogin from "../components/Auth/FormLogin";
 import FormRegister from "../components/Auth/FormRegister";
 import FormReset from "../components/Auth/FormReset";
-import { useAuth } from "../contexts/AuthContext/useAuth";
+import { useAuth } from "../contexts/AuthContext";
 
 const ComponentPage: NextPage = () => {
 
